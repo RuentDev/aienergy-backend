@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_form_newsletters",
+  "info": {
+    "displayName": "Newsletter",
+    "icon": "envelop",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.input"
+    },
+    "sub_text": {
+      "type": "string"
+    },
+    "button_title": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

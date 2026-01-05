@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "credit_cards",
+  "info": {
+    "singularName": "credit-card",
+    "pluralName": "credit-cards",
+    "displayName": "CreditCard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stripePaymentMethodID": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "last4Char": {
+      "type": "string"
+    },
+    "expMonth": {
+      "type": "string"
+    },
+    "expYear": {
+      "type": "string"
+    },
+    "isDefault": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "creditCards"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

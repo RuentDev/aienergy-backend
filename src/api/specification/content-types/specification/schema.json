@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specifications",
+  "info": {
+    "singularName": "specification",
+    "pluralName": "specifications",
+    "displayName": "Specification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "regex": "^(?!.*[%+&]).+$"
+    },
+    "key": {
+      "type": "string",
+      "required": true,
+      "regex": "^(?!.*[%+&]).+$"
+    }
+  }
+}

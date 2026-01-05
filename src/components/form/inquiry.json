@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_form_inquiries",
+  "info": {
+    "displayName": "Inquiry",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "button_title": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.input"
+    }
+  }
+}

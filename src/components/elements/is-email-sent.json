@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_elements_is_email_sents",
+  "info": {
+    "displayName": "IsEmailSent"
+  },
+  "options": {},
+  "attributes": {
+    "orderConfirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "orderShipped": {
+      "type": "boolean",
+      "default": false
+    },
+    "orderReadyforPickup": {
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
+    "orderCancelled": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

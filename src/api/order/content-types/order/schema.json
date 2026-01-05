@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderNumber": {
+      "type": "string"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "fulfillmentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "processing",
+        "confirmed",
+        "ready",
+        "completed",
+        "cancelled",
+        "rejected"
+      ]
+    },
+    "voucherCode": {
+      "type": "string"
+    },
+    "orderNotes": {
+      "type": "string"
+    },
+    "shippingType": {
+      "type": "enumeration",
+      "enum": [
+        "delivery",
+        "pickup"
+      ]
+    },
+    "deliverySize": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "midium",
+        "large",
+        "oversize",
+        "n/a"
+      ]
+    },
+    "shippingNotes": {
+      "type": "string"
+    },
+    "deliveryNotes": {
+      "type": "string"
+    },
+    "pickupNotes": {
+      "type": "string"
+    },
+    "pickupOption": {
+      "type": "component",
+      "component": "elements.pickup-option",
+      "repeatable": false
+    },
+    "total": {
+      "type": "component",
+      "component": "elements.total",
+      "repeatable": false
+    },
+    "shippingAddress": {
+      "type": "component",
+      "component": "elements.shipping-address",
+      "repeatable": false
+    },
+    "warehouseLocation": {
+      "type": "component",
+      "component": "elements.warehouse-location",
+      "repeatable": false
+    },
+    "lineItems": {
+      "type": "component",
+      "component": "elements.line-item",
+      "repeatable": true
+    },
+    "shippingOption": {
+      "type": "component",
+      "component": "elements.delivery-option",
+      "repeatable": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "order"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "orderId"
+    },
+    "email": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "emailSent": {
+      "type": "component",
+      "component": "elements.is-email-sent",
+      "repeatable": false
+    }
+  }
+}

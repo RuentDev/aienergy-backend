@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_elements_prices",
+  "info": {
+    "displayName": "Price",
+    "icon": "priceTag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "price": {
+      "type": "decimal"
+    },
+    "sale_price": {
+      "type": "decimal"
+    },
+    "min_quantity": {
+      "type": "biginteger"
+    },
+    "max_quantity": {
+      "type": "biginteger"
+    },
+    "user_level": {
+      "type": "enumeration",
+      "enum": [
+        "SMALL",
+        "MID-SIZED",
+        "VIP",
+        "WHOLESALE"
+      ]
+    }
+  }
+}

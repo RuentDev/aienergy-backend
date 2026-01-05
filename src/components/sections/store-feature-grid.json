@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_store_feature_grids",
+  "info": {
+    "displayName": "Store Feature Grid",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "features": {
+      "type": "component",
+      "component": "elements.store-feature",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

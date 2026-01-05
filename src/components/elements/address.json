@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_elements_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "suburb": {
+      "type": "string"
+    },
+    "state_territory": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    }
+  }
+}

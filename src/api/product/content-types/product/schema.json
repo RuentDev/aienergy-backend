@@ -1,0 +1,138 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "handle": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "product_type": {
+      "type": "string"
+    },
+    "vendor": {
+      "type": "string"
+    },
+    "odoo_product_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "odoo_product_name": {
+      "type": "string",
+      "required": false,
+      "unique": false
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "inventory": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::inventory.inventory",
+      "mappedBy": "product"
+    },
+    "key_features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::key-feature.key-feature"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::collection.collection",
+      "inversedBy": "products"
+    },
+    "specifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
+    },
+    "releasedAt": {
+      "type": "datetime",
+      "required": false,
+      "default": "2025-05-13T16:00:00.000Z"
+    },
+    "shipping": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::shipping.shipping",
+      "mappedBy": "product"
+    },
+    "madeBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "improvedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "removedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "maxQuantity": {
+      "type": "integer"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "maxQuantityForLargeShipment": {
+      "type": "integer"
+    },
+    "price_lists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::price.price",
+      "mappedBy": "products"
+    }
+  }
+}

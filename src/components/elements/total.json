@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_elements_totals",
+  "info": {
+    "displayName": "Total",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "currency": {
+      "type": "string"
+    },
+    "subtotal": {
+      "type": "decimal"
+    },
+    "deliveryFee": {
+      "type": "decimal"
+    },
+    "cardSurcharge": {
+      "type": "decimal"
+    },
+    "gst": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    }
+  }
+}

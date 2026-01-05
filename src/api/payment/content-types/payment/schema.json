@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "processing",
+        "paid",
+        "cancelled",
+        "failed",
+        "refunded"
+      ]
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": [
+        "credit_card",
+        "bank_transfer",
+        "account_credit"
+      ]
+    },
+    "cardDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.card"
+    },
+    "stripePaymentIntentId": {
+      "type": "string"
+    },
+    "orderId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "payments"
+    }
+  }
+}

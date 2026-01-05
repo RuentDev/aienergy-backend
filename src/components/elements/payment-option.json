@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_payment_options",
+  "info": {
+    "displayName": "Payment Option"
+  },
+  "options": {},
+  "attributes": {
+    "card_number": {
+      "type": "string"
+    },
+    "expiration_date": {
+      "type": "date"
+    },
+    "cvv": {
+      "type": "string"
+    },
+    "card_holder_name": {
+      "type": "string"
+    },
+    "billing_zip": {
+      "type": "string"
+    }
+  }
+}

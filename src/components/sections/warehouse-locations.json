@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_warehouse_locations",
+  "info": {
+    "displayName": "Warehouse Locations"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "locations": {
+      "displayName": "Warehouse Location",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.warehouse-location"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_elements_shipping_addresses",
+  "info": {
+    "displayName": "Shipping Address",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "odoo_address_id": {
+      "type": "string"
+    },
+    "street1": {
+      "type": "string"
+    },
+    "street2": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

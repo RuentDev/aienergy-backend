@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_elements_line_items",
+  "info": {
+    "displayName": "Line Item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "line": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.cart-item"
+    }
+  }
+}

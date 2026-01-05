@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layout_warehouse_locations",
+  "info": {
+    "displayName": "Warehouse Location",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "string"
+    },
+    "warehouse_time": {
+      "type": "string"
+    },
+    "office_time": {
+      "type": "string"
+    },
+    "google_maps_link": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

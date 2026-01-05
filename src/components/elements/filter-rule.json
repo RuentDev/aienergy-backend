@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_elements_filter_rules",
+  "info": {
+    "displayName": "Filter",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "handle": {
+      "type": "string"
+    }
+  }
+}

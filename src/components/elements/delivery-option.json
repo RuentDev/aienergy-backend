@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elements_delivery_options",
+  "info": {
+    "displayName": "Shipping Option",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "calculation": {
+      "type": "string"
+    },
+    "packageSize": {
+      "type": "string"
+    },
+    "insideMetro": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "integer"
+    }
+  }
+}

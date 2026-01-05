@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_elements_cart_items",
+  "info": {
+    "displayName": "Cart Item",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "odoo_product_id": {
+      "type": "string",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "productID": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    }
+  }
+}

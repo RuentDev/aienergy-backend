@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.warehouse-locations",
+        "sections.contact-us",
+        "sections.contact-details",
+        "sections.about",
+        "sections.image-slider",
+        "form.newsletter",
+        "form.inquiry",
+        "sections.category-button-section",
+        "sections.store-feature-grid",
+        "sections.featured-products"
+      ]
+    }
+  }
+}

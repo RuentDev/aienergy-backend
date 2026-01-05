@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_category_button_sections",
+  "info": {
+    "displayName": "Category Button Section",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "categories": {
+      "type": "component",
+      "component": "elements.product-category",
+      "repeatable": true
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

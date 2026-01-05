@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_image_sliders",
+  "info": {
+    "displayName": "Image Slider",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "animation_duration": {
+      "type": "integer"
+    },
+    "display_button": {
+      "type": "boolean"
+    },
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.slide"
+    }
+  }
+}

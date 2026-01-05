@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elements_pickup_options",
+  "info": {
+    "displayName": "Pickup Option",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "estimatedArrivalTime": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "timeRange": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "time"
+    }
+  }
+}

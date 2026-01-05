@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_featured_products",
+  "info": {
+    "displayName": "Featured Products",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

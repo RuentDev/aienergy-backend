@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prices",
+  "info": {
+    "singularName": "price",
+    "pluralName": "prices",
+    "displayName": "Price"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comparePrice": {
+      "type": "decimal"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "min_quantity": {
+      "type": "biginteger"
+    },
+    "max_quantity": {
+      "type": "biginteger"
+    },
+    "user_level": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "price_lists"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_elements_warehouse_addresses",
+  "info": {
+    "displayName": "Warehouse Address",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "suburb": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    }
+  }
+}

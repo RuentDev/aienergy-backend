@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_specs",
+  "info": {
+    "displayName": "Specs"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[^-]*$"
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
