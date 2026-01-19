@@ -199,6 +199,76 @@ export const resolvers = {
         return error;
       }
     },
+    deleteUser: async (_: any, args: { documentId: string }) => {
+      try {
+        const user = await strapi
+          .documents("plugin::users-permissions.user")
+          .findFirst({
+            filters: {
+              documentId: {
+                $eq: args.documentId,
+              },
+            },
+            populate: {
+              addresses: true,
+              carts: true,
+              creditCards: true,
+              orders: true,
+            },
+          });
+
+        if (user.addresses) {
+          await strapi.query("api::address.address").deleteMany({
+            where: {
+              documentId: {
+                $in: user.addresses.map((address) => address.documentId),
+              },
+            },
+          });
+        }
+        if (user.carts) {
+          await strapi.query("api::cart.cart").deleteMany({
+            where: {
+              documentId: {
+                $in: user.carts.map((cartItem) => cartItem.documentId),
+              },
+            },
+          });
+        }
+        if (user.creditCards) {
+          await strapi.query("api::credit-card.credit-card").deleteMany({
+            where: {
+              documentId: {
+                $in: user.creditCards.map(
+                  (creditCard) => creditCard.documentId
+                ),
+              },
+            },
+          });
+        }
+
+        if (user.orders) {
+          await strapi.query("api::order.order").deleteMany({
+            where: {
+              documentId: {
+                $in: user.orders.map((order) => order.documentId),
+              },
+            },
+          });
+        }
+
+        const deletedUser = await strapi
+          .documents("plugin::users-permissions.user")
+          .delete({
+            documentId: user.documentId,
+          });
+
+        return deletedUser;
+      } catch (error) {
+        console.error("Error deleting users:", error.message);
+        return error;
+      }
+    },
     deleteUsers: async (_: any, args: { documentIds: string[] }) => {
       try {
         const users = await strapi

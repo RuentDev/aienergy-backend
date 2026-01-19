@@ -30,6 +30,12 @@ export const resolversConfig = {
       //   createGraphQLRateLimitMiddleware('mutation'),
       // ],
     },
+    deleteUser: {
+      auth: true,
+      // middlewares: [
+      //   createGraphQLRateLimitMiddleware('mutation'),
+      // ],
+    },
     importProducts: {
       auth: true,
       // middlewares: [

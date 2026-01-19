@@ -211,6 +211,7 @@ export const typeDefs = `
 		approvedUser(documentId: ID!, data: ApprovedUserInput!): UsersPermissionsUser
 		updateUser(documentId: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUser
 		deleteUsers(documentIds: [ID]!): DeleteUsersResponse
+		deleteUser(documentId: ID!): UsersPermissionsUser
 		importProducts(data: [ImportProductsInput]!): ImportProductsResponse
 		deleteProducts(documentIds: [ID]!): BulkDeleteResponse
 		importPriceLists(data: [ImportPriceListsInput]!): ImportPriceListResponse
