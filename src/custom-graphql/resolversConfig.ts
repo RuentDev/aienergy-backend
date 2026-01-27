@@ -88,6 +88,12 @@ export const resolversConfig = {
       //   createGraphQLRateLimitMiddleware('public'),
       // ],
     },
+    getCollectionWithProducts: {
+      auth: false,
+      // middlewares: [
+      //   createGraphQLRateLimitMiddleware('public'),
+      // ],
+    },
     files: {
       auth: true,
       // middlewares: [

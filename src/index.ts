@@ -52,6 +52,17 @@ export default {
             });
 
           if (roleData && roleData?.type === "public") {
+            await strapi.documents("api::name.name").create({
+              data: {
+                first_name: params.data.name.first_name,
+                last_name: params.data.name.last_name,
+                user: event.result.documentId,
+              },
+              populate: {
+                user: true,
+              },
+            });
+
             await strapi.documents("api::address.address").create({
               data: {
                 title: "Default",
@@ -80,7 +91,7 @@ export default {
         } catch (error) {
           console.log(
             "AFTER CREATE ERROR:" + model.singularName + action,
-            error
+            error,
           );
         }
       },

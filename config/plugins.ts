@@ -2,9 +2,16 @@ export default ({ env }) => {
   return {
     "users-permissions": {
       config: {
+        jwtManagement: "refresh", // Set this to 'refresh'
+        sessions: {
+          accessTokenLifespan: 3600, // 1 hour in seconds
+          maxRefreshTokenLifespan: 2592000, // 30 days in seconds
+        },
         register: {
           allowedFields: [
             "name",
+            "name.first_name",
+            "name.last_name",
             "phone",
             "business_name",
             "business_number",

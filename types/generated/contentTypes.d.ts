@@ -694,13 +694,20 @@ export interface ApiNameName extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    first_name: Schema.Attribute.String;
+    last_name: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::name.name'> &
       Schema.Attribute.Private;
+    middle_name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1553,7 +1560,7 @@ export interface PluginUsersPermissionsUser
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    name: Schema.Attribute.JSON;
+    name: Schema.Attribute.Relation<'oneToOne', 'api::name.name'>;
     nickname: Schema.Attribute.String;
     odoo_user_id: Schema.Attribute.String;
     order: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;

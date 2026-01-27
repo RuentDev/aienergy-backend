@@ -148,9 +148,6 @@
     "isRegisteredForNews": {
       "type": "boolean"
     },
-    "name": {
-      "type": "json"
-    },
     "refreshToken": {
       "type": "string"
     },
@@ -169,6 +166,12 @@
         "VIP",
         "WHOLE_SELLER"
       ]
+    },
+    "name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::name.name",
+      "mappedBy": "user"
     }
   }
 }

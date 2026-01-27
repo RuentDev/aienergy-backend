@@ -148,7 +148,7 @@ export const resolvers = {
           currentStatus.includes("DENIED")
         ) {
           throw new Error(
-            `User has been processed and marked as "${currentStatus}"`
+            `User has been processed and marked as "${currentStatus}"`,
           );
         }
 
@@ -240,7 +240,7 @@ export const resolvers = {
             where: {
               documentId: {
                 $in: user.creditCards.map(
-                  (creditCard) => creditCard.documentId
+                  (creditCard) => creditCard.documentId,
                 ),
               },
             },
@@ -313,7 +313,7 @@ export const resolvers = {
               where: {
                 documentId: {
                   $in: user.creditCards.map(
-                    (creditCard) => creditCard.documentId
+                    (creditCard) => creditCard.documentId,
                   ),
                 },
               },
@@ -365,8 +365,8 @@ export const resolvers = {
         const sortedFileIds = files
           .map((existingFile) =>
             files.find(
-              (file: any) => file.documentId === existingFile.documentId
-            )
+              (file: any) => file.documentId === existingFile.documentId,
+            ),
           )
           .filter(Boolean)
           .map((file: any) => file.id);
@@ -374,8 +374,8 @@ export const resolvers = {
         const sortedImageIds = images
           .map((existingImage) =>
             images.find(
-              (image: any) => image.documentId === existingImage.documentId
-            )
+              (image: any) => image.documentId === existingImage.documentId,
+            ),
           )
           .filter(Boolean)
           .map((image: any) => image.id);
@@ -411,7 +411,7 @@ export const resolvers = {
                     },
                   });
                 return newPrice.documentId;
-              })
+              }),
             ),
             // Key Features
             Promise.all(
@@ -432,7 +432,7 @@ export const resolvers = {
                   .documents("api::key-feature.key-feature")
                   .create({ data: { feature: feature.feature } });
                 return newFeature.documentId;
-              })
+              }),
             ),
             // Specifications
             Promise.all(
@@ -454,7 +454,7 @@ export const resolvers = {
                   .documents("api::specification.specification")
                   .create({ data: { key: spec.key, value: spec.value } });
                 return newSpec.documentId;
-              })
+              }),
             ),
           ]);
 
@@ -537,11 +537,11 @@ export const resolvers = {
       // 2. Sort files and images to match the client's order
       const sortedFileIds = args.data.files
         .filter((idInOrder: string) =>
-          files.some((existingImage) => existingImage.documentId === idInOrder)
+          files.some((existingImage) => existingImage.documentId === idInOrder),
         )
         .map((idInOrder: string) => {
           const existingFile = files.find(
-            (img) => img.documentId === idInOrder
+            (img) => img.documentId === idInOrder,
           );
           return existingFile?.id;
         })
@@ -549,11 +549,13 @@ export const resolvers = {
 
       const sortedImageIds = args.data.images
         .filter((idInOrder: string) =>
-          images.some((existingImage) => existingImage.documentId === idInOrder)
+          images.some(
+            (existingImage) => existingImage.documentId === idInOrder,
+          ),
         )
         .map((idInOrder: string) => {
           const existingImage = images.find(
-            (img) => img.documentId === idInOrder
+            (img) => img.documentId === idInOrder,
           );
           return existingImage?.id;
         })
@@ -588,7 +590,7 @@ export const resolvers = {
                 },
               });
               return newPrice.documentId;
-            })
+            }),
           ),
           // Key Features
           Promise.all(
@@ -607,7 +609,7 @@ export const resolvers = {
                 .query("api::key-feature.key-feature")
                 .create({ data: { feature: feature.feature } });
               return newFeature.documentId;
-            })
+            }),
           ),
           // Specifications
           Promise.all(
@@ -629,9 +631,9 @@ export const resolvers = {
                 .query("api::specification.specification")
                 .create({ data: { key: spec.key, value: spec.value } });
               return newSpec.documentId;
-            })
+            }),
           ),
-        ]
+        ],
       );
 
       // 4. Update standalone relations (Inventory, Shipping)
@@ -720,7 +722,7 @@ export const resolvers = {
             brand: args.data.brand,
             tags: (args.data.tags || []).map((tag: any) => tag.documentId),
             collections: (args.data.collections || []).map(
-              (col: any) => col.documentId
+              (col: any) => col.documentId,
             ),
             images: sortedImageIds,
             files: sortedFileIds,
@@ -757,7 +759,7 @@ export const resolvers = {
     importProducts: async (
       _: any,
       { data }: { data: ImportProductsInput[] },
-      context: any
+      context: any,
     ) => {
       try {
         const createdProducts = [];
@@ -971,7 +973,7 @@ export const resolvers = {
                     spec.key &&
                     spec.value &&
                     typeof spec.key === "string" &&
-                    typeof spec.value === "string"
+                    typeof spec.value === "string",
                 );
 
                 if (validSpecs.length === 0) {
@@ -1008,7 +1010,7 @@ export const resolvers = {
                       specs.push(createdSpecs.id);
                     } catch (createManyError) {
                       console.warn(
-                        `createMany failed for ${product.name} specifications, using individual creates: ${createManyError.message}`
+                        `createMany failed for ${product.name} specifications, using individual creates: ${createManyError.message}`,
                       );
                     }
                   }
@@ -1029,7 +1031,7 @@ export const resolvers = {
                 // Validate and prepare key features data
                 const validKeyFeatures = product.key_features.filter(
                   (feature) =>
-                    feature.feature && typeof feature.feature === "string"
+                    feature.feature && typeof feature.feature === "string",
                 );
 
                 if (validKeyFeatures.length === 0) {
@@ -1053,7 +1055,7 @@ export const resolvers = {
                   keyFeatures = createdKeyFeatures.ids.map((id) => id) || [];
                 } catch (createError) {
                   console.warn(
-                    `Failed to create key features: ${createError.message}`
+                    `Failed to create key features: ${createError.message}`,
                   );
                 }
               } catch (error) {
@@ -1337,7 +1339,7 @@ export const resolvers = {
                   where: {
                     id: {
                       $in: product.key_features.map(
-                        (keyFeature) => keyFeature.id
+                        (keyFeature) => keyFeature.id,
                       ),
                     },
                   },
@@ -1453,7 +1455,7 @@ export const resolvers = {
     },
     importPriceLists: async (
       _: any,
-      args: { data: ImportPriceListInput[] }
+      args: { data: ImportPriceListInput[] },
     ) => {
       try {
         const createdPriceLists = [];
@@ -1504,7 +1506,7 @@ export const resolvers = {
 
                 // Check if a price with the same user level already exists for this product
                 const existingPrice = product.price_lists?.find(
-                  (price: any) => price.user_level === priceInput.user_level
+                  (price: any) => price.user_level === priceInput.user_level,
                 );
 
                 if (existingPrice) {
@@ -1672,7 +1674,6 @@ export const resolvers = {
         return error;
       }
     },
-
     // AUTH
   },
   Query: {
@@ -1826,6 +1827,36 @@ export const resolvers = {
         return res;
       } catch (error) {}
     },
+    getCollectionWithProducts: async (_: any, args: { handle: string }) => {
+      try {
+        const { handle } = args;
+        const collection = await strapi
+          .documents("api::collection.collection")
+          .findFirst({
+            filters: {
+              handle: handle,
+            },
+            populate: {
+              products: true,
+            },
+          });
+
+        return {
+          ...collection,
+          products_connection: {
+            nodes: collection.products,
+            pageInfo: {
+              total: collection.products.length,
+            },
+          },
+          };
+
+        // return collection;
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
+    },
     files: async (_: any, args: any) => {
       try {
         const files = await strapi.documents("plugin::upload.file").findMany({
@@ -1846,7 +1877,7 @@ export const resolvers = {
     },
     user: async (
       _: any,
-      args: { filters: { email: string; username: string } }
+      args: { filters: { email: string; username: string } },
     ) => {
       try {
         const user = await strapi

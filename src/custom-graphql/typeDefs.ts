@@ -78,6 +78,22 @@ export const typeDefs = `
 		zipCode: String!
 	}
 
+	type CollectionWithProducts {
+  documentId: ID!
+  title: String
+  handle: String!
+  sortOrder: String
+  productCount: Long
+  image: UploadFile
+  productFilters(filters: ComponentElementsFilterRuleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsFilterRule]
+  products_connection(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ProductEntityResponseCollection
+  products(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Product]!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+
 	input ApprovedUserInput {
 		account_status: String!
 		level: String
@@ -225,6 +241,7 @@ export const typeDefs = `
 		getStoreProduct(handle: String!): Product
 		getStoreProducts(filters: ProductFiltersInput, pagination: PaginationArg, sort: [String]): [Product]!
 		getPage(slug: String!): Page
+		getCollectionWithProducts(handle: String!): CollectionWithProducts
 		files(filters: UploadFileFiltersInput, sort: [String]): [UploadFile]!
 		user(filters: UserFiltersInput): UsersPermissionsUser
 	}

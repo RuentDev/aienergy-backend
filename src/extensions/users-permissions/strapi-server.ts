@@ -1,4 +1,4 @@
-module.exports = (plugin) => {
+module.exports = (plugin: any) => {
   const rawAuth = plugin.controllers.auth({ strapi });
 
   const auth = () => {
@@ -23,7 +23,7 @@ module.exports = (plugin) => {
 
           if (!business_name || !business_number) {
             return ctx.badRequest(
-              "Business name and business number are required."
+              "Business name and business number are required.",
             );
           }
 
@@ -34,6 +34,9 @@ module.exports = (plugin) => {
               filters: {
                 business_name: {
                   $eq: business_name,
+                },
+                account_status: {
+                  $in: ["PENDING", "APPROVED"],
                 },
               },
             });
@@ -50,6 +53,9 @@ module.exports = (plugin) => {
                 business_number: {
                   $eq: business_number,
                 },
+                account_status: {
+                  $in: ["PENDING", "APPROVED"],
+                },
               },
             });
 
@@ -64,6 +70,9 @@ module.exports = (plugin) => {
               filters: {
                 username: {
                   $eq: username,
+                },
+                account_status: {
+                  $in: ["PENDING", "APPROVED"],
                 },
               },
             });
@@ -80,6 +89,9 @@ module.exports = (plugin) => {
                 email: {
                   $eq: email,
                 },
+                account_status: {
+                  $in: ["PENDING", "APPROVED"],
+                },
               },
             });
 
@@ -87,11 +99,11 @@ module.exports = (plugin) => {
             return ctx.badRequest("Email already exists.");
           }
 
-          await rawAuth.register(ctx);
+          await rawAuth.register(ctx, next);
         } catch (error) {
           console.error("Error in strapi-server: ", error);
           return ctx.internalServerError(
-            "An error occurred during validation."
+            "An error occurred during validation.",
           );
         }
       },
@@ -108,7 +120,6 @@ module.exports = (plugin) => {
               $or: [{ email: identifier }, { username: identifier }],
             },
             fields: [
-              "name",
               "username",
               "email",
               "phone",
@@ -127,15 +138,18 @@ module.exports = (plugin) => {
               "updatedAt",
             ],
             populate: {
+              name: {
+                fields: ["first_name", "last_name"],
+              },
               role: {
                 fields: ["name"],
               },
             },
           });
 
-        if (user.role.name === "PUBLIC") {
+        if (user?.role?.name === "PUBLIC") {
           return ctx.badRequest(
-            "This account is currently pending approval. You will be notified once the account is approved."
+            "This account is currently pending approval. You will be notified once the account is approved.",
           );
         }
 
