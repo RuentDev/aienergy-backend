@@ -207,8 +207,8 @@ export const typeDefs = `
 		price_lists: [ImportPriceInput]
 		key_features: [ImportKeyFeatureInput]
 		specifications: [ImportSpecificationInput]
-		tags: [ImportTagsInput]
-		collections: [ImportCollectionsInput]
+		tags: [String]
+		collections: [String]
 		images: [String]
 		files: [String]
 	}
@@ -237,6 +237,9 @@ export const typeDefs = `
 	}
 	
 	type Query {
+		product(documentId: ID!, status: PublicationStatus = PUBLISHED, includePriceLists: Boolean, populateCreator: Boolean): Product
+		products_connection(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED, includePriceLists: Boolean, populateCreator: Boolean): ProductEntityResponseCollection
+		collections(filters: CollectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED, includePriceLists: Boolean = false): [Collection]!
 		searchProducts(query: String!): [Product]!
 		getStoreProduct(handle: String!): Product
 		getStoreProducts(filters: ProductFiltersInput, pagination: PaginationArg, sort: [String]): [Product]!
