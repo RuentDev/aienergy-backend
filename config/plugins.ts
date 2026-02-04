@@ -6,7 +6,7 @@ export default ({ env }) => {
         sessions: {
           // accessTokenLifespan: 25, // 10 seconds
           // maxRefreshTokenLifespan: 40, // 30 days in seconds
-          accessTokenLifespan: 60, // 1 hour in seconds
+          accessTokenLifespan: 3600, // 1 hour in seconds
           maxRefreshTokenLifespan: 2592000, // 30 days in seconds
         },
         register: {
