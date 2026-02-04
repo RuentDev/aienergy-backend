@@ -1,4 +1,34 @@
 module.exports = ({ env }) => ({
+  "users-permissions": {
+    config: {
+      jwtManagement: "refresh", // Set this to 'refresh'
+      sessions: {
+        // accessTokenLifespan: 25, // 10 seconds
+        // maxRefreshTokenLifespan: 40, // 30 days in seconds
+        accessTokenLifespan: 60, // 1 hour in seconds
+        maxRefreshTokenLifespan: 2592000, // 30 days in seconds
+      },
+      register: {
+        allowedFields: [
+          "name",
+          "name.first_name",
+          "name.last_name",
+          "phone",
+          "business_name",
+          "business_number",
+          "business_type",
+          "account_status",
+          "user_level",
+          "city",
+          "country",
+          "state",
+          "street1",
+          "street2",
+          "zip_code",
+        ],
+      },
+    },
+  },
   email: {
     config: {
       provider: "nodemailer",
@@ -46,27 +76,6 @@ module.exports = ({ env }) => ({
         upload: {},
         uploadStream: {},
         delete: {},
-      },
-    },
-  },
-  "users-permissions": {
-    config: {
-      register: {
-        allowedFields: [
-          "name",
-          "phone",
-          "business_name",
-          "business_number",
-          "business_type",
-          "account_status",
-          "user_level",
-          "city",
-          "country",
-          "state",
-          "street1",
-          "street2",
-          "zip_code",
-        ],
       },
     },
   },
