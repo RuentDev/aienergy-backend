@@ -711,6 +711,49 @@ export interface ApiNameName extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNotificationNotification
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'notifications';
+  info: {
+    displayName: 'Notification';
+    pluralName: 'notifications';
+    singularName: 'notification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    admin_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isRead: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.String;
+    metadata: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    role_type: Schema.Attribute.String;
+    trigger_order: Schema.Attribute.Relation<'manyToOne', 'api::order.order'>;
+    trigger_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Schema.Attribute.Enumeration<['new_user', 'new_order', 'system']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
@@ -757,6 +800,10 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     shippingType: Schema.Attribute.Enumeration<['delivery', 'pickup']>;
     total: Schema.Attribute.Component<'elements.total', false>;
     trackingNumber: Schema.Attribute.String;
+    triggered_notifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1562,6 +1609,10 @@ export interface PluginUsersPermissionsUser
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.Relation<'oneToOne', 'api::name.name'>;
     nickname: Schema.Attribute.String;
+    notifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    >;
     odoo_user_id: Schema.Attribute.String;
     order: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
@@ -1581,6 +1632,10 @@ export interface PluginUsersPermissionsUser
     >;
     stripeCustomerID: Schema.Attribute.String;
     tokenVersion: Schema.Attribute.String;
+    triggered_notifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notification.notification'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1615,6 +1670,7 @@ declare module '@strapi/strapi' {
       'api::inventory.inventory': ApiInventoryInventory;
       'api::key-feature.key-feature': ApiKeyFeatureKeyFeature;
       'api::name.name': ApiNameName;
+      'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
       'api::page.page': ApiPagePage;
       'api::payment.payment': ApiPaymentPayment;

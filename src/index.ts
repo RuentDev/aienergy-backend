@@ -80,6 +80,33 @@ export default {
                 user: true,
               },
             });
+
+            // create notification for new user
+            const userWithNotification = await strapi
+              .documents("plugin::users-permissions.user")
+              .findMany({
+                filters: {
+                  role: {
+                    name: {
+                      $in: ["SALES", "ADMIN"],
+                    },
+                  },
+                },
+                populate: {
+                  role: true,
+                },
+              });
+            userWithNotification.forEach(async (user) => {
+              await strapi.documents("api::notification.notification").create({
+                data: {
+                  message: "New user registered",
+                  type: "new_user",
+                  trigger_user: event.result.documentId,
+                  admin_user: user.documentId,
+                },
+              });
+            });
+            // 1.0
           }
           await fetch(`${process.env.N8N_WEBHOOK_URL}/create-user`, {
             method: "POST",

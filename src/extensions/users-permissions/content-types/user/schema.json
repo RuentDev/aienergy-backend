@@ -172,6 +172,18 @@
       "relation": "oneToOne",
       "target": "api::name.name",
       "mappedBy": "user"
+    },
+    "triggered_notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "trigger_user"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "admin_user"
     }
   }
 }

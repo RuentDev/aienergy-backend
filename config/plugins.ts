@@ -4,7 +4,9 @@ export default ({ env }) => {
       config: {
         jwtManagement: "refresh", // Set this to 'refresh'
         sessions: {
-          accessTokenLifespan: 3600, // 1 hour in seconds
+          // accessTokenLifespan: 25, // 10 seconds
+          // maxRefreshTokenLifespan: 40, // 30 days in seconds
+          accessTokenLifespan: 60, // 1 hour in seconds
           maxRefreshTokenLifespan: 2592000, // 30 days in seconds
         },
         register: {
@@ -26,26 +28,6 @@ export default ({ env }) => {
             "zip_code",
           ],
         },
-        // callback: {
-        //   validate: (cbUrl, options) => {
-        //     // cbUrl is where Strapi is being asked to redirect the auth info
-        //     // that was received from the provider to
-
-        //     // in this case, we will only validate that the
-        //     // if using a base url, you should always include the trailing slash
-        //     // although in real-world usage you should also include the full paths
-        //     if (
-        //       cbUrl.startsWith("https://myproxy.mysite.com/") ||
-        //       cbUrl.startsWith("https://mysite.com/")
-        //     ) {
-        //       return;
-        //     }
-
-        //     // Note that you MUST throw an error to fail validation
-        //     // return values are not checked
-        //     throw new Error("Invalid callback url");
-        //   },
-        // },
       },
     },
     email: {

@@ -113,6 +113,12 @@
       "type": "component",
       "component": "elements.is-email-sent",
       "repeatable": false
+    },
+    "triggered_notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "trigger_order"
     }
   }
 }
