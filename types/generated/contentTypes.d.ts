@@ -568,11 +568,9 @@ export interface ApiCollectionCollection extends Struct.CollectionTypeSchema {
       'api::collection.collection'
     > &
       Schema.Attribute.Private;
-    productCount: Schema.Attribute.BigInteger;
     productFilters: Schema.Attribute.Component<'elements.filter-rule', true>;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    sortOrder: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

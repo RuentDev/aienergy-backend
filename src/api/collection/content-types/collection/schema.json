@@ -20,12 +20,6 @@
       "required": true,
       "unique": true
     },
-    "sortOrder": {
-      "type": "string"
-    },
-    "productCount": {
-      "type": "biginteger"
-    },
     "image": {
       "type": "media",
       "multiple": false,

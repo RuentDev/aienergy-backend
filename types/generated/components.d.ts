@@ -73,6 +73,7 @@ export interface ElementsFilterRule extends Struct.ComponentSchema {
     displayName: 'Filter';
   };
   attributes: {
+    field: Schema.Attribute.String;
     handle: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
