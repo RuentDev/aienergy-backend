@@ -83,47 +83,56 @@ export default {
   },
   getStoreProducts: async (_: any, args: any) => {
     const { filters, pagination, sort } = args;
-    const products = await strapi.documents("api::product.product").findMany({
-      filters,
-      pagination,
-      sort,
-      populate: {
-        brand: true,
-        tags: true,
-        collections: true,
-        inventory: true,
-        shipping: true,
-        price_lists: true,
-        key_features: true,
-        specifications: true,
-        files: true,
-        images: true,
-      },
-    });
+    try {
+      const products = await strapi.documents("api::product.product").findMany({
+        filters,
+        pagination,
+        sort,
+        populate: {
+          brand: true,
+          tags: true,
+          collections: true,
+          inventory: true,
+          shipping: true,
+          price_lists: true,
+          key_features: true,
+          specifications: true,
+          files: true,
+          images: true,
+        },
+      });
 
-    return products;
+      return products;
+    } catch (error) {
+      return error;
+    }
   },
   getStoreProduct: async (_: any, args: any) => {
     const { handle } = args;
-    const product = await strapi.documents("api::product.product").findFirst({
-      filters: {
-        handle: handle,
-        releasedAt: { $notNull: true },
-      },
-      populate: {
-        files: true,
-        images: true,
-        brand: true,
-        tags: true,
-        collections: true,
-        inventory: true,
-        shipping: true,
-        price_lists: true,
-        key_features: true,
-        specifications: true,
-      },
-    });
 
-    return product;
+    try {
+      const product = await strapi.documents("api::product.product").findFirst({
+        filters: {
+          handle: handle,
+          releasedAt: { $notNull: true },
+        },
+        populate: {
+          files: true,
+          images: true,
+          brand: true,
+          tags: true,
+          collections: true,
+          inventory: true,
+          shipping: true,
+          price_lists: true,
+          key_features: true,
+          specifications: true,
+        },
+      });
+
+      return product;
+    } catch (error) {
+      return error;
+    }
   },
 };

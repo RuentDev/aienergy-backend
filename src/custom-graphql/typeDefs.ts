@@ -241,7 +241,7 @@ export const typeDefs = `
 		products_connection(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED, includePriceLists: Boolean, populateCreator: Boolean): ProductEntityResponseCollection
 		collections(filters: CollectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED, includePriceLists: Boolean = false): [Collection]!
 		searchProducts(query: String!): [Product]!
-		getStoreProduct(handle: String!): Product
+		getStoreProduct(handle: String!, includePriceLists: Boolean = false): Product
 		getStoreProducts(filters: ProductFiltersInput, pagination: PaginationArg, sort: [String]): [Product]!
 		getPage(slug: String!): Page
 		getCollectionWithProducts(handle: String!): CollectionWithProducts
