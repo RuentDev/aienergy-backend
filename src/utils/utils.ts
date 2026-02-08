@@ -7,12 +7,15 @@ export const updateStandalone = async (
   const payload: any = {};
   fields.forEach((f) => (payload[f] = standaloneData[f]));
 
-  if (standaloneData.documentId) {
+  const docId =
+    standaloneData.documentId === "" ? null : standaloneData.documentId;
+
+  if (docId) {
     await strapi.documents(collectionName as any).update({
-      documentId: standaloneData.documentId,
+      documentId: docId as string,
       data: payload,
     });
-    return standaloneData.documentId;
+    return docId as string;
   }
   const created = await strapi.documents(collectionName as any).create({
     data: payload,
@@ -27,7 +30,9 @@ export const syncRelation = async (
   updateFields: string[] = [],
 ): Promise<string | string[]> => {
   const incomingDocIds = new Set(
-    incomingData.map((item) => item.documentId).filter(Boolean),
+    incomingData
+      .map((item) => (item.documentId === "" ? null : item.documentId))
+      .filter(Boolean),
   );
 
   // Delete items removed by client
@@ -46,12 +51,13 @@ export const syncRelation = async (
       const payload: any = {};
       updateFields.forEach((f) => (payload[f] = item[f]));
 
-      if (item.documentId) {
+      const docId = item.documentId === "" ? null : item.documentId;
+      if (docId) {
         await strapi.documents(collectionName as any).update({
-          documentId: item.documentId,
+          documentId: docId as string,
           data: payload,
         });
-        return item.documentId;
+        return docId as string;
       }
       const created = await strapi.documents(collectionName as any).create({
         data: payload,
