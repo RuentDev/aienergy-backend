@@ -105,7 +105,7 @@ export default {
   },
   getStoreProduct: async (_: any, args: any) => {
     const { handle } = args;
-    const products = await strapi.documents("api::product.product").findFirst({
+    const product = await strapi.documents("api::product.product").findFirst({
       filters: {
         handle: handle,
         releasedAt: { $notNull: true },
@@ -124,6 +124,6 @@ export default {
       },
     });
 
-    return products;
+    return product;
   },
 };
