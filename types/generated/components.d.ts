@@ -10,10 +10,9 @@ export interface ElementsAddress extends Struct.ComponentSchema {
   attributes: {
     city: Schema.Attribute.String;
     country: Schema.Attribute.String;
-    isActive: Schema.Attribute.Boolean;
     phone: Schema.Attribute.String;
     postcode: Schema.Attribute.String;
-    state_territory: Schema.Attribute.String;
+    state: Schema.Attribute.String;
     street: Schema.Attribute.String;
     suburb: Schema.Attribute.String;
   };

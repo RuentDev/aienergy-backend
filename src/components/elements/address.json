@@ -13,7 +13,7 @@
     "suburb": {
       "type": "string"
     },
-    "state_territory": {
+    "state": {
       "type": "string"
     },
     "postcode": {
@@ -21,9 +21,6 @@
     },
     "country": {
       "type": "string"
-    },
-    "isActive": {
-      "type": "boolean"
     },
     "phone": {
       "type": "string"
